@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  web:
+    container_name: node_app
+    restart: always
+    build: . # ruta desde donde construirá la imagen
+    ports:
+      - "5000:3000"
+    links:
+      - mongo
+    volumes: # carga los archivos modificados sin necesidad de detener el contenedor y volverlo a ejecutar (- desde:ruta_destino)
+      - .:/usr/src/app
+  mongo:
+    container_name: mongo_db
+    image: mongo # imagen en dockerhub
+    logging:
+      driver: none # deshabilita los logs de este contenedor
+    ports:
+      - "27018:27017"

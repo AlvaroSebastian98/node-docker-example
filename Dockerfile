@@ -26,5 +26,13 @@ EXPOSE 3000
 
 # Comandos a ejecutar cuando se lance la imagen construida
 # Se ejecutarán dentro del WORKDIR
+
+# 1. for one command
 # CMD [ "npm", "start" ]
-CMD npm run build && npm start
+
+# 2. for many commands with && (start)
+# CMD npm run build && npm start
+
+# 3. dev
+# CMD npm run dev
+CMD [ "npm", "run", "dev" ]
